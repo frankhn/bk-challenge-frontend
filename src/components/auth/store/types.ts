@@ -1,0 +1,9 @@
+export const REGISTER = 'REGISTER'
+export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
+export const REGISTER_API_ERROR = 'REGISTER_API_ERROR'
+
+export const LOGIN = 'LOGIN'
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
+export const LOGIN_API_ERROR = 'LOGIN_API_ERROR'
+
+
