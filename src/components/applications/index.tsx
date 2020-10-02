@@ -3,18 +3,36 @@ import { AppState } from '../../store'
 import { connect } from 'react-redux'
 import { getApplications } from './store/action'
 import { Link } from 'react-router-dom'
+import Modal from '../common/modals/Modal'
+import ViewApplicant from '../common/table/applicant'
 
 interface JobProps {
     getApplications(): any
     applications: Array<any>
 }
 
+interface State {
+    modal: boolean
+    application: any
+}
 
-class Applications extends Component<JobProps> {
+class Applications extends Component<JobProps, State> {
 
+    state: State = {
+        modal: false,
+        application: {}
+    }
 
     componentDidMount() {
         this.props.getApplications()
+    }
+
+    modalHandler = () => {
+        return this.setState(prevState => ({ modal: !prevState.modal }))
+    }
+
+    applicationHandler = (application: any) => {
+        return this.setState({ modal: true, application })
     }
 
 
@@ -23,7 +41,7 @@ class Applications extends Component<JobProps> {
             <>
                 {this.props.applications && this.props.applications
                     ? this.props.applications.map(application => (
-                        <div className="job">
+                        <div className="job" onClick={() => this.applicationHandler(application)} style={{ cursor: "pointer"}}>
                             <div >
                                 <h3>
                                     <strong>
@@ -37,6 +55,13 @@ class Applications extends Component<JobProps> {
                         </div>
                     ))
                     : <div>fetching available applications... </div>}
+
+
+                <ViewApplicant
+                    application={this.state.application}
+                    show={this.state.modal}
+                    togglemodal={this.modalHandler}
+                />
             </>
         )
     }
