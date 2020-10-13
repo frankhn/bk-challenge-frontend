@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom'
 import Modal from '../common/modals/Modal'
 import { AvField, AvForm } from 'availity-reactstrap-validation'
 import { Alert } from 'reactstrap'
+import Loader from '../common/Spinner/Loader'
+import { Button } from 'reactstrap';
 
 interface JobProps {
     getJobs(): any
@@ -52,8 +54,8 @@ class Jobs extends Component<JobProps, State> {
 
     render() {
         return (
-            <>
-                <button onClick={this.createJobModalHandler}>Create A Job</button>
+            <div className="col-md-6">
+                <Button color="primary" onClick={this.createJobModalHandler}>Create A Job</Button>
                 {this.props.jobs && this.props.jobs
                     ? this.props.jobs.map(job => (
                         <div className="job">
@@ -67,7 +69,7 @@ class Jobs extends Component<JobProps, State> {
                             </Link>
                         </div>
                     ))
-                    : <div>fetching available Jobs... </div>}
+                    : <Loader />}
 
                 <Modal
                     isOpen={this.state.modal}
@@ -102,19 +104,19 @@ class Jobs extends Component<JobProps, State> {
                             />
 
                             <div className="submit-btn">
-                                <button
+                                <Button
+                                    color="primary"
                                     className="btn"
                                     type="submit"
                                     style={{ border: '1px solid #ccc' }}
-                                >Apply
-                  </button>
+                                >Apply</Button>
                             </div>
 
                         </AvForm>
 
                     </div>
                 </Modal>
-            </>
+            </div>
         )
     }
 }
