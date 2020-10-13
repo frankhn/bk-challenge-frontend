@@ -19,6 +19,19 @@ export const jobs = (state = initialState, action: any) => {
             loading: false,
             error: action.payload
         })
+
+        // Create Job
+        case actionTypes.CREATE_JOBS: return updateObject(state, {
+            loading: true
+        })
+        case actionTypes.CREATE_JOBS_SUCCESS: return updateObject(state, {
+            loading: false,
+            newJob: action.payload
+        })
+        case actionTypes.CREATE_JOBS_API_ERROR: return updateObject(state, {
+            loading: false,
+            errorCreatingJob: action.payload
+        })
         default: return state
     }
 }

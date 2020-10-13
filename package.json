@@ -24,8 +24,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
     "test": "react-scripts test",
+    "docker": "sudo docker build -t employeefront .",
+    "employeefront": "sudo docker run -d -p 5000:80 employeefront",
+    "build": "CI=False react-scripts build",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

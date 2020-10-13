@@ -1,13 +1,14 @@
 import { takeEvery, fork, put, all, call } from 'redux-saga/effects';
 
 import {
+    CREATE_JOBS,
     GET_JOBS,
 } from './types';
 import {
     getJobsSuccess,
-    getJobsApiError
+    getJobsApiError, createJobSuccess, createJobApiError
 } from './action';
-import { getRequest } from '../../../store/api';
+import { getRequest, postRequest } from '../../../store/api';
 
 
 function* getJobs({ type: GET_JOBS }: any) {
@@ -24,9 +25,24 @@ export function* watchJobs() {
 }
 
 
+function* createJob({ type: CREATE_JOBS, payload: { job } }: any) {
+    try {
+        const response = yield call(postRequest, '/jobs', job);
+        yield put(createJobSuccess(response.data));
+    } catch (error) {
+        yield put(createJobApiError(error.response));
+    }
+}
+
+export function* watchCreateJob() {
+    yield takeEvery(CREATE_JOBS, createJob);
+}
+
+
 function* jobsSaga() {
     yield all([
         fork(watchJobs),
+        fork(watchCreateJob)
     ]);
 }
 
