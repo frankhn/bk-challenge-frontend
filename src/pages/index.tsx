@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react'
 import Jobs from '../components/jobs'
 import Applications from '../components/applications'
+import Separator from '../components/common/separator'
 
 const home = () => {
     return (
-        <Fragment>
-            <h1>Available Jobs</h1>
+        <>
+            <div className="container" style={{ display: "flex"}}>
 
-            <Jobs />
+                <Jobs />
 
-            <h2>Applications</h2>
-
-            <Applications />
-        </Fragment>
+                <Applications />
+            </div>
+        </>
     )
 }
 
