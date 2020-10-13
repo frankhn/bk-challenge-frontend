@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { apply } from './store/action'
 import { AvForm, AvField } from 'availity-reactstrap-validation';
 import { getJobs } from '../../jobs/store/action'
+import { Row, Col, Button } from 'reactstrap'
 
 interface AppylProps {
     match: any
@@ -38,7 +39,7 @@ class Apply extends Component<AppylProps> {
             job = jobs.filter(job => job.id == id)[0]
         }
         return (
-            <Fragment>
+            <div className="container" style={{ padding: "0 8rem" }}>
                 <h2>You are Appylying for {job.title}</h2>
                 <hr />
                 { this.props.applies && this.props.applies
@@ -53,91 +54,125 @@ class Apply extends Component<AppylProps> {
                 }
 
                 <hr />
-                <div className="register">
+                <div className="register" style={{ margin: "auto" }}>
                     <AvForm
                         className="form-horizontal"
                         onValidSubmit={this.handleValidSubmit}>
-                        <div className="form-group">
-                            <AvField
-                                type="text"
-                                name="firstname"
-                                label="First Name"
-                                required
-                                value=""
-                                placeholder="First Name"
-                            />
-                        </div>
-                        <AvField
-                            type="text"
-                            name="lastname"
-                            label="Last Name"
-                            required
-                        />
-                        <AvField
-                            type="email"
-                            name="email"
-                            label="Email"
-                            required
-                        />
-                        <AvField
-                            type="text"
-                            name="address"
-                            label="Address"
-                            required
-                        />
-                        <AvField
-                            type="number"
-                            name="age"
-                            label="Age"
-                            required
-                        />
-                        <AvField
-                            type="select"
-                            name="gender"
-                            label="Gender"
-                            required>
-                            <option value="male">Male</option>
-                            <option value="Female">Female</option>
-                        </AvField>
-                        <AvField
-                            type="date"
-                            name="bithdate"
-                            label="Birth Date"
-                            required
-                        />
-                        <AvField
-                            type="text"
-                            name="phone"
-                            label="Phone Number"
-                            required
-                        />
-                        <AvField
-                            type="text"
-                            name="password"
-                            label="Password"
-                            required
-                        />
-
-                        <AvField
-                            type="url"
-                            name="cv"
-                            label="Link To You CV"
-                            required
-                        />
-
-                        <div className="submit-btn">
-                            <button
-                                className="btn"
-                                type="submit"
-                                style={{ border: '1px solid #ccc' }}
-                            >Apply
-                  </button>
-                        </div>
+                        <Row className="justify-content-center">
+                            <Col md={8} lg={6} xl={5}>
+                                <div className="form-group">
+                                    <AvField
+                                        type="text"
+                                        name="firstname"
+                                        label="First Name"
+                                        required
+                                        value=""
+                                        placeholder="First Name"
+                                    />
+                                </div>
+                            </Col>
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="text"
+                                    name="lastname"
+                                    label="Last Name"
+                                    required
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center">
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="email"
+                                    name="email"
+                                    label="Email"
+                                    required
+                                />
+                            </Col>
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="text"
+                                    name="address"
+                                    label="Address"
+                                    required
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center">
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="number"
+                                    name="age"
+                                    label="Age"
+                                    required
+                                />
+                            </Col>
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="select"
+                                    name="gender"
+                                    label="Gender"
+                                    required>
+                                    <option value="male">Male</option>
+                                    <option value="Female">Female</option>
+                                </AvField>
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center">
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="date"
+                                    name="bithdate"
+                                    label="Birth Date"
+                                    required
+                                />
+                            </Col>
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="text"
+                                    name="phone"
+                                    label="Phone Number"
+                                    required
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center">
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="text"
+                                    name="password"
+                                    label="Password"
+                                    required
+                                />
+                            </Col>
+                            <Col md={8} lg={6} xl={5}>
+                                <AvField
+                                    type="url"
+                                    name="cv"
+                                    label="Link To You CV"
+                                    required
+                                />
+                            </Col>
+                        </Row>
+                        <Row className="justify-content-center">
+                            <Col md={8} lg={6} xl={5}>
+                                <div className="submit-btn">
+                                    <Button
+                                        color="primary"
+                                        className="btn"
+                                        type="submit"
+                                        style={{ border: '1px solid #ccc' }}
+                                    >Apply</Button>
+                                </div>
+                            </Col>
+                            <Col md={8} lg={6} xl={5}>
+                            </Col>
+                        </Row>
 
                     </AvForm>
 
                 </div>
-            </Fragment>
+            </div>
         )
     }
 }
