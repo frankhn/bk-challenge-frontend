@@ -1,0 +1,13 @@
+.application {
+    border: 1px solid #ccc;
+    padding: 1rem;
+    cursor: pointer;
+    background: #ccc;
+    margin-bottom: 1rem;
+}
+
+.appli-name {
+    font-family: fantasy;
+    text-align: center;
+    text-decoration: underline;
+}
